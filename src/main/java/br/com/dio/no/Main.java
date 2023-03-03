@@ -3,9 +3,9 @@ package br.com.dio.no;
 public class Main {
     public static void main(String[] args) {
 
-        No primeiroNo = new No("A");
-        No segundoNo = new No("B");
-        No terceiroNo = new No("C");
+        No<String> primeiroNo = new No<>("A");
+        No<String> segundoNo = new No<>("B");
+        No<String> terceiroNo = new No<>("C");
 
         primeiroNo.setProximoNo(segundoNo); // apontando a próxima ref. de primeiroNo para segundoNo
         segundoNo.setProximoNo(terceiroNo);
