@@ -27,15 +27,15 @@
 
 ```java
 
- // função genérica que imprime uma lista de "qualquer coisa"
+// função genérica que imprime uma lista de "qualquer coisa"
 public void imprimeLista(List<?> lista){
         for(Object obj:lista){
-            System.out.println(obj);
+        System.out.println(obj);
         }
-}
+        }
 
-List<Aluno> minhaLista=new List<Aluno>();
-imprimeLista(minhaLista);
+        List<Aluno> minhaLista=new List<Aluno>();
+        imprimeLista(minhaLista);
 ```
 
 ### Bounded Wildcard (Upper Bounded / Lower Bounded)
@@ -49,14 +49,14 @@ imprimeLista(minhaLista);
 
 // função genérica que imprime uma lista de objetos
 // do tipo Pessoa ou de seus herdeiros 
-public void imprimeLista(List<? extends Pessoa> listaPessoas){
-        for(Pessoa p : listaPessoas){
-            System.out.println(p);
+public void imprimeLista(List<?extends Pessoa> listaPessoas){
+        for(Pessoa p:listaPessoas){
+        System.out.println(p);
         }
-}
+        }
 
-List<Aluno> minhaLista=new List<Aluno>();
-imprimeLista(minhaLista);
+        List<Aluno> minhaLista=new List<Aluno>();
+        imprimeLista(minhaLista);
 ```
 
 #### Lower Bounded
@@ -68,21 +68,21 @@ imprimeLista(minhaLista);
 
 // função genérica que imprime uma lista de objetos
 // do tipo Pessoa ou antecessores
-public void imprimeLista(List<? super Pessoa> listaPessoas){
-        for(Pessoa p : listaPessoas){
-            System.out.println(p);
+public void imprimeLista(List<? super Pessoa>listaPessoas){
+        for(Pessoa p:listaPessoas){
+        System.out.println(p);
         }
-}
+        }
 
-List<Aluno> minhaLista = new List<Aluno>();
+        List<Aluno> minhaLista=new List<Aluno>();
 // como Aluno seria um herdeiro de Pessoa, esse método não irá funcionar e apresentará erro
 // em tempo de compilação: 
-imprimeLista(minhaLista);
+        imprimeLista(minhaLista);
 
-List<Humano> minhaListaDeHumanos = new List<Humano>();
+        List<Humano> minhaListaDeHumanos=new List<Humano>();
 // como Humano é um super tipo (classe mãe) de Pessoa, esse método irá funcionar normalmente,
 // pois Pessoa estende de Humano:: 
-imprimeLista(minhaListaDeHumanos); 
+        imprimeLista(minhaListaDeHumanos); 
 ```
 
 ### Convenções para utilização de Generics
@@ -92,3 +92,50 @@ imprimeLista(minhaListaDeHumanos);
 - **E** para "Element". Exemplo: ``List<E>``
 - **T** para "Type". Exemplo: ``Collection#addAll``
 - **?** é o tipo mais genérico possível, portanto, usado para representar qualquer tipo.
+
+# Estruturas de Dados
+
+## Pilha (LIFO)
+
+### Conceito:
+
+- O conceito de pilha enquanto estrutura de dados assemelha-se a uma pilha de livros, por exemplo. A rigor, uma pilha
+  precisa se comportar de algumas formas:
+    - A inserção de um novo elemento sempre se dá no topo da pilha;
+    - O último elemento a ser inserido na pilha é o primeiro a sair. Daí, essa estrutura também é considerada do tipo *
+      *LIFO**, isto é, _**Last In, First Out**_;
+    - Dentro de uma pilha, um Nó que está mais ao topo aponta para o Nó anterior a si mesmo;
+    - O primeiro Nó (isto é, o primeiro Nó a ter sido inserido) deve apontar para `null`;
+    - O elemento que está no topo da pilha deve conter uma referência que aponta para si.
+
+#### Método ``.top()``
+
+Esse método serve para acessar o primeiro Nó da pilha, mas sem removê-lo da estrutura. o exemplo de código abaixo
+demostra que a variiável ``meuNo`` guarda o valor de referência do No que está no topo da pilha.
+
+```java 
+No meuNo=pilha.top();
+```
+
+A partir desta referência, é possível acessar o valor contido no No e, então, poder atribuí-lo a alguma variável. O
+código abaixo demonstra esse exemplo.
+
+```java 
+int numero=meuNo.getInt();
+```
+
+#### Método ``.pop()``
+
+Semelhante ao método ``.top()``, o `.pop()` também tem a intenção de acessar a referência do topo da pilha. Porém, ao
+fazer isto, este método remove o No do topo da pilha. Neste caso, a referência do topo é realocada para que seja
+apontada para o No anterior àquele que foi removido.
+
+#### Método ``.push()``
+
+Ao contrário do método ``.pop()``, este método tem o objetivo de inserior um novo No à pilha. Neste cenário, a
+referência de próximo Nó do Nó que foi inserido deve apontar não para ``null``, mas sim para o Nó abaixo.
+Consequentemente, a referência de topo deve passar a apontar para o Nó que fora inserido.
+
+#### Método ``.isEmpty()``
+
+Verifica se a referência de entrada para pilha está nula. O valor retornado deve ser um ``booleano``.
