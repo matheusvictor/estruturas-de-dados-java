@@ -34,4 +34,22 @@ public class Pilha {
         }
         return null; // caso a pilha esteja vazia, deverá retornar um ponteiro nulo
     }
+
+    @Override
+    public String toString() {
+
+        boolean refEntradaNaoNula = true;
+        No<Integer> noAuxiliar = this.refNoEntrada;
+        StringBuilder retorno = new StringBuilder("------------------------\n");
+
+        while (refEntradaNaoNula) {
+            if (noAuxiliar != null) {
+                retorno.append("[No {dado = ").append(noAuxiliar.getConteudo()).append("}]\n");
+                noAuxiliar = noAuxiliar.getRefProximoNo(); // o Nó atual passa a ser o próximo Nó logo abaixo
+            } else {
+                refEntradaNaoNula = false;
+            }
+        }
+        return retorno.append("------------------------\n").toString();
+    }
 }
