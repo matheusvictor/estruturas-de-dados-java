@@ -4,17 +4,18 @@ public class Fila {
 
     private No<Object> refNoEntrada; // a entrada da fila se dá no final desta!
 
-    public void Fila() {
+    public Fila() {
         this.refNoEntrada = null;
     }
 
-    public void enqueue(No<Object> novoNo) {
+    public void enqueue(Object obj) {
+        No<Object> novoNo = new No<>(obj);
         // Ao inserir um novo Nó, a ref. de próximo deste deve ser o antigo último Nó da fila
         novoNo.setRefProximoNo(this.refNoEntrada);
         this.refNoEntrada = novoNo; // o novo Nó inserido passa a ser a ref. de entrada da fila, afinal ele passa a ser o último!
     }
 
-    public No<Object> dequeue() {
+    public Object dequeue() {
         if (!this.isEmpty()) {
 
             boolean naoEhPrimeiroNo = true;
@@ -30,12 +31,12 @@ public class Fila {
                     naoEhPrimeiroNo = false;
                 }
             }
-            return primeiroNo;
+            return primeiroNo.getConteudo();
         }
         return null;
     }
 
-    public No<Object> first() {
+    public Object first() {
         if (!this.isEmpty()) {
             boolean naoEhPrimeiroNo = true;
             No<Object> primeiroNo = this.refNoEntrada;
@@ -47,7 +48,7 @@ public class Fila {
                     naoEhPrimeiroNo = false;
                 }
             }
-            return primeiroNo;
+            return primeiroNo.getConteudo();
         }
         return null;
     }
