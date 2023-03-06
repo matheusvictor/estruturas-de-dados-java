@@ -108,7 +108,9 @@ public void imprimeLista(List<? super Pessoa>listaPessoas){
     - O primeiro Nó (isto é, o primeiro Nó a ter sido inserido) deve apontar para `null`;
     - O elemento que está no topo da pilha deve conter uma referência que aponta para si.
 
-#### Método ``.top()``
+### Métodos da pilha:
+
+#### .top()
 
 Esse método serve para acessar o primeiro Nó da pilha, mas sem removê-lo da estrutura. o exemplo de código abaixo
 demostra que a variiável ``meuNo`` guarda o valor de referência do No que está no topo da pilha.
@@ -124,18 +126,51 @@ código abaixo demonstra esse exemplo.
 int numero=meuNo.getInt();
 ```
 
-#### Método ``.pop()``
+#### .pop()
 
 Semelhante ao método ``.top()``, o `.pop()` também tem a intenção de acessar a referência do topo da pilha. Porém, ao
 fazer isto, este método remove o No do topo da pilha. Neste caso, a referência do topo é realocada para que seja
 apontada para o No anterior àquele que foi removido.
 
-#### Método ``.push()``
+#### .push()
 
 Ao contrário do método ``.pop()``, este método tem o objetivo de inserior um novo No à pilha. Neste cenário, a
 referência de próximo Nó do Nó que foi inserido deve apontar não para ``null``, mas sim para o Nó abaixo.
 Consequentemente, a referência de topo deve passar a apontar para o Nó que fora inserido.
 
-#### Método ``.isEmpty()``
+#### .isEmpty()
 
 Verifica se a referência de entrada para pilha está nula. O valor retornado deve ser um ``booleano``.
+
+## Fila (FIFO)
+
+## Pilha (LIFO)
+
+### Conceito:
+
+- O conceito de fila enquanto estrutura de dados assemelha-se a uma fila de pessoas para serem atendidas num balcão de
+  vendas de ingressos, por exemplo. A rigor, uma fila precisa se comportar de algumas formas:
+    - A inserção de um novo elemento sempre se dá no final da fila;
+    - O primeiro elemento a ser inserido na fila é o primeiro a sair. Daí, essa estrutura também é considerada do tipo *
+      *FIFO**, isto é, _**First In, First Out**_
+    - O primeiro Nó sempre deve apontar para `null`;
+    - O Nó que sucede o primeiro deve apontar para um outro Nó que é também seu sucessor;
+    - O último Nó da fila deve possuir uma referência de entrada da fila;
+
+### Métodos da fila:
+
+#### .enqueue()
+
+Método responsável por enfileirar (isto é, inserir) um novo Nó na fila. Neste caso, o novo Nó deve ser colocado no final
+da fila. Neste caso, este Nó deve possuir uma referência de próximo para o antigo Nó que estava no final da fila, e a
+referência de entrada da fila deve passar a apontar para este Nó que foi inserido.
+
+#### .dequeue()
+
+Método responsável por desenfileirar (isto é, remover) o Nó que está na primeira posição da fila. Neste caso, o Nó
+imediatamente anterior àquele que foi removido passa a ser o primeiro elemento da fila e, portanto, passa a apontar para
+``null``.
+
+#### .isEmpty()
+
+Verifica se a referência de entrada para fila está nula. O valor retornado deve ser um ``booleano``.
