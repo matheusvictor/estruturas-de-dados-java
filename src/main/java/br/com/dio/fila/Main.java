@@ -3,13 +3,14 @@ package br.com.dio.fila;
 public class Main {
     public static void main(String[] args) {
 
-        Fila fila = new Fila();
+        Fila<String> fila = new Fila();
 
         System.out.println("Fila vazia: " + fila.isEmpty());
-        fila.enqueue("primeiroNo");
-        fila.enqueue("segundoNo");
-        fila.enqueue("terceiroNo");
-        fila.enqueue("quartoNo");
+        fila.enqueue("primeiro");
+        fila.enqueue("segundo");
+        fila.enqueue("terceiro");
+        fila.enqueue("quarto");
+        // fila.enqueue(1); // linha apresenta erro de compilação, pois a fila instanciada aceita apenas objetos do tipo String
         System.out.println("Fila vazia: " + fila.isEmpty());
         System.out.println(fila);
         System.out.println("Primeiro da fila: " + fila.first()); // "consultando" o primeiro elemento da fila

@@ -1,26 +1,26 @@
 package br.com.dio.fila;
 
-public class Fila {
+public class Fila<T> {
 
-    private No<Object> refNoEntrada; // a entrada da fila se dá no final desta!
+    private No<T> refNoEntrada; // a entrada da fila se dá no final desta!
 
     public Fila() {
         this.refNoEntrada = null;
     }
 
-    public void enqueue(Object obj) {
-        No<Object> novoNo = new No<>(obj);
+    public void enqueue(T obj) {
+        No<T> novoNo = new No<>(obj);
         // Ao inserir um novo Nó, a ref. de próximo deste deve ser o antigo último Nó da fila
         novoNo.setRefProximoNo(this.refNoEntrada);
         this.refNoEntrada = novoNo; // o novo Nó inserido passa a ser a ref. de entrada da fila, afinal ele passa a ser o último!
     }
 
-    public Object dequeue() {
+    public T dequeue() {
         if (!this.isEmpty()) {
 
             boolean naoEhPrimeiroNo = true;
-            No<Object> primeiroNo = this.refNoEntrada;
-            No<Object> noAnterior = this.refNoEntrada;
+            No<T> primeiroNo = this.refNoEntrada;
+            No<T> noAnterior = this.refNoEntrada;
 
             while (naoEhPrimeiroNo) {
                 if (primeiroNo.getRefProximoNo() != null) {
@@ -36,10 +36,10 @@ public class Fila {
         return null;
     }
 
-    public Object first() {
+    public T first() {
         if (!this.isEmpty()) {
             boolean naoEhPrimeiroNo = true;
-            No<Object> primeiroNo = this.refNoEntrada;
+            No<T> primeiroNo = this.refNoEntrada;
 
             while (naoEhPrimeiroNo) {
                 if (primeiroNo.getRefProximoNo() != null) {
@@ -61,7 +61,7 @@ public class Fila {
     public String toString() {
 
         boolean refEntradaNaoNula = true;
-        No<Object> noAuxiliar = this.refNoEntrada;
+        No<T> noAuxiliar = this.refNoEntrada;
         StringBuilder retorno = new StringBuilder();
 
         while (refEntradaNaoNula) {
