@@ -1,4 +1,4 @@
-package br.com.dio.fila;
+package br.com.dio.estruturas_de_dados.fila;
 
 public class Fila<T> {
 

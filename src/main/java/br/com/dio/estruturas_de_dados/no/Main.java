@@ -1,4 +1,4 @@
-package br.com.dio.no;
+package br.com.dio.estruturas_de_dados.no;
 
 public class Main {
     public static void main(String[] args) {

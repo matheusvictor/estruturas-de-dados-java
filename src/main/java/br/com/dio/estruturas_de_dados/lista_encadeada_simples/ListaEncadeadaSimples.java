@@ -1,6 +1,6 @@
-package br.com.dio.lista_encadeada_simples;
+package br.com.dio.estruturas_de_dados.lista_encadeada_simples;
 
-import br.com.dio.no.No;
+import br.com.dio.estruturas_de_dados.no.No;
 
 public class ListaEncadeadaSimples<T> {
 

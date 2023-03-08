@@ -1,4 +1,4 @@
-package br.com.dio.pilha;
+package br.com.dio.estruturas_de_dados.pilha;
 
 public class Main {
     public static void main(String[] args) {
