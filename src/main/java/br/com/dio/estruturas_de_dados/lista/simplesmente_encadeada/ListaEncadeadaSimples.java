@@ -1,4 +1,4 @@
-package br.com.dio.estruturas_de_dados.lista_encadeada_simples;
+package br.com.dio.estruturas_de_dados.lista.simplesmente_encadeada;
 
 import br.com.dio.estruturas_de_dados.no.No;
 
