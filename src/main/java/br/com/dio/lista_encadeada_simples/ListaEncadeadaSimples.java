@@ -10,25 +10,23 @@ public class ListaEncadeadaSimples<T> {
         this.noRefEntrada = null;
     }
 
+    public boolean isEmpty() {
+        return this.noRefEntrada == null;
+    }
+
     public int size() {
         int tamanhoLista = 0;
-
         No<T> refAuxiliar = this.noRefEntrada;
 
         while (true) {
             if (refAuxiliar != null) {
                 tamanhoLista++;
                 if (refAuxiliar.getProximoNo() != null) {
-                    refAuxiliar = refAuxiliar.getProximoNo();
-                }
+                    refAuxiliar = refAuxiliar.getProximoNo(); // se o próximo Nó a partir do Nó de referência, não for nulo, o Nó de ref. passa a ser esse próximo
+                } else break; // se o próximo Nó a partir do Nó de referência for nulo, o laço é quebrado para não continuar "caminhando" para frente
             } else break;
         }
-
         return tamanhoLista;
-    }
-
-    public boolean isEmpty() {
-        return this.noRefEntrada == null;
     }
 
     public void add(T conteudo) {
@@ -74,7 +72,7 @@ public class ListaEncadeadaSimples<T> {
         No<T> noAuxiliar = this.noRefEntrada;
 
         if (!this.isEmpty()) {
-            for (int i = 0; i < (this.size() - 1); i++) {
+            for (int i = 0; i <= indice ; i++) {
                 no = noAuxiliar;
                 noAuxiliar = noAuxiliar.getProximoNo();
             }
@@ -88,4 +86,15 @@ public class ListaEncadeadaSimples<T> {
         }
     }
 
+    @Override
+    public String toString() {
+        StringBuilder strRetorno = new StringBuilder();
+        No<T> noAuxiliar = this.noRefEntrada;
+        for(int i = 0; i < size(); i++){
+            strRetorno.append("[No { conteúdo = ").append(noAuxiliar.getConteudo()).append(" }]---> ");
+            noAuxiliar = noAuxiliar.getProximoNo();
+        }
+        strRetorno.append("null");
+        return strRetorno.toString();
+    }
 }
