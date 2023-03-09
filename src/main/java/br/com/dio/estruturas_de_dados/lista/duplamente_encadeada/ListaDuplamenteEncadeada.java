@@ -29,11 +29,7 @@ public class ListaDuplamenteEncadeada<T> {
 
         NoDuplo<T> noAuxiliar = this.getNo(indice);
         NoDuplo<T> novoNo = new NoDuplo<>(conteudo);
-
         novoNo.setProximoNo(noAuxiliar);
-
-        if (indice == 0) this.primeiroNo = novoNo;
-        else novoNo.getNoAnterior().setProximoNo(novoNo);
 
         if (novoNo.getProximoNo() != null) {
             novoNo.setNoAnterior(noAuxiliar.getNoAnterior());
@@ -42,10 +38,15 @@ public class ListaDuplamenteEncadeada<T> {
             novoNo.setNoAnterior(this.ultimoNo);
             this.ultimoNo = novoNo;
         }
+
+        if (indice == 0) this.primeiroNo = novoNo;
+        else novoNo.getNoAnterior().setProximoNo(novoNo);
+
         this.tamanhoLista++;
     }
 
-    private void remove(int indice) {
+    public NoDuplo<T> remove(int indice) {
+        NoDuplo<T> noARemover = null;
 
         if (this.isEmpty()) {
             throw new NullPointerException("A lista está vazia!");
@@ -59,7 +60,7 @@ public class ListaDuplamenteEncadeada<T> {
             }
 
         } else {
-            NoDuplo<T> noARemover = this.getNo(indice);
+            noARemover = this.getNo(indice);
             noARemover
                     .getNoAnterior()
                     .setProximoNo(noARemover.getProximoNo());
@@ -71,9 +72,10 @@ public class ListaDuplamenteEncadeada<T> {
             }
         }
         this.tamanhoLista--;
+        return noARemover;
     }
 
-    private boolean isEmpty() {
+    public boolean isEmpty() {
         return tamanhoLista == 0;
     }
 
@@ -95,4 +97,16 @@ public class ListaDuplamenteEncadeada<T> {
         return noAuxiliar;
     }
 
+    @Override
+    public String toString() {
+        String strRetorno = "";
+        NoDuplo<T> noAuxiliar = this.primeiroNo; // a impressão se dará a partir do primeiro elemento da lista
+
+        for (int i = 0; i < this.size(); i++) {
+            strRetorno += "[No { conteúdo = " + noAuxiliar.getConteudo() + " }] --> ";
+            noAuxiliar = noAuxiliar.getProximoNo();
+        }
+        strRetorno += "null";
+        return strRetorno;
+    }
 }
