@@ -22,6 +22,26 @@ public class ListaCircular<T> {
         return this.tamanhoLista == 0;
     }
 
+    public void remove(int indice) {
+        if (indice >= this.tamanhoLista) {
+            throw new IndexOutOfBoundsException("Índice não existe nesta lista!");
+        }
+
+        No<T> noARemover = this.noCauda;
+        if (indice == 0) {
+            this.noCauda = this.noCauda.getProximoNo();
+            this.noCabeca.setProximoNo(this.noCauda);
+        } else if (indice == 1) {
+            this.noCauda.setProximoNo(this.noCauda.getProximoNo().getProximoNo());
+        } else {
+            for (int i = 0; i < (indice - 1); i++) {
+                noARemover = noARemover.getProximoNo(); // percorrendo a lista até chegar ao Nó a ser removido
+            }
+            noARemover.setProximoNo(noARemover.getProximoNo().getProximoNo());
+        }
+        this.tamanhoLista--;
+    }
+
     public T get(int indice) {
         return this.getNo(indice).getConteudo();
     }
