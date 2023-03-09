@@ -45,6 +45,41 @@ public class ListaDuplamenteEncadeada<T> {
         this.tamanhoLista++;
     }
 
+    public void remove() {
+
+    }
+
+    private void remove(int indice) {
+
+        if (this.isEmpty()) {
+            throw new NullPointerException("A lista está vazia!");
+        }
+
+        if (indice == 0) { // caso seja o primeiro elemento da lista a ser removido...
+            this.primeiroNo = this.primeiroNo.getProximoNo(); // o primeiroNo passa a ser o segundo elemento da lista
+
+            if (this.primeiroNo != null) {  // verifica se o segundo Nó da lista existe
+                this.primeiroNo.setNoAnterior(null); // e define seu noAnterior como nulo, afinal, o antigo primeiroNo foi removido
+            }
+
+        } else {
+            NoDuplo<T> noARemover = this.getNo(indice);
+            noARemover
+                    .getNoAnterior()
+                    .setProximoNo(noARemover.getProximoNo());
+
+            if (noARemover != this.ultimoNo) { // caso não esteja no último Nó da lista...
+                noARemover
+                        .getProximoNo() // significa que há um outro Nó após este...
+                        .setNoAnterior(noARemover.getNoAnterior()); // e, neste caso, o Nó anterior do Nó que sucede noARemover passa a ser o anterior deste noARemover
+            }
+        }
+        this.tamanhoLista--;
+    }
+
+    private boolean isEmpty() {
+        return tamanhoLista == 0;
+    }
 
     public int size() {
         return this.tamanhoLista;
