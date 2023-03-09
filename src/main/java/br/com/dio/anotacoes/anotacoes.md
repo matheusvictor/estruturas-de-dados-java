@@ -6,6 +6,7 @@
 - Atribuições em Java são **sempre** feitas por cópias de valor. Quando trata-se dos tipos primitivos, o valor em
   memória é copiado. Por outro lado, no caso de Objetos, o valor da referência deste em memória é copiado; e, sendo
   assim, o Objeto não é duplicado.
+
 </details>
 
 <details>
@@ -14,6 +15,7 @@
 - Evita uso excessivo de casting e redundância de código
 - Encontrar erros em tempo de compilação
 - introduzido deste o Java SE 5.0
+
 </details>
 
 <details>
@@ -130,8 +132,8 @@ Abaixo, estarão breves explicações sobre algumas dessas estruturas.
 - O conceito de pilha enquanto estrutura de dados assemelha-se a uma pilha de livros, por exemplo. A rigor, uma pilha
   precisa se comportar de algumas formas:
     - A inserção de um novo elemento sempre se dá no topo da pilha;
-    - O último elemento a ser inserido na pilha é o primeiro a sair. Daí, essa estrutura também é considerada do tipo 
-    **LIFO**, isto é, _**Last In, First Out**_;
+    - O último elemento a ser inserido na pilha é o primeiro a sair. Daí, essa estrutura também é considerada do tipo
+      **LIFO**, isto é, _**Last In, First Out**_;
     - Dentro de uma pilha, um Nó que está mais ao topo aponta para o Nó anterior a si mesmo;
     - O primeiro Nó (isto é, o primeiro Nó a ter sido inserido) deve apontar para `null`;
     - O elemento que está no topo da pilha deve conter uma referência que aponta para si.
@@ -180,12 +182,12 @@ Verifica se a referência de entrada para pilha está nula. O valor retornado de
 
 - O conceito de fila enquanto estrutura de dados assemelha-se a uma fila de pessoas para serem atendidas num balcão de
   vendas de ingressos, por exemplo. A rigor, uma fila precisa se comportar de algumas formas:
-  - A inserção de um novo elemento sempre se dá no final da fila;
-  - O primeiro elemento a ser inserido na fila é o primeiro a sair. Daí, essa estrutura também é considerada do tipo *
-    *FIFO**, isto é, _**First In, First Out**_
-  - O primeiro Nó sempre deve apontar para `null`;
-  - O Nó que sucede o primeiro deve apontar para um outro Nó que é também seu sucessor;
-  - O último Nó da fila deve possuir uma referência de entrada da fila;
+    - A inserção de um novo elemento sempre se dá no final da fila;
+    - O primeiro elemento a ser inserido na fila é o primeiro a sair. Daí, essa estrutura também é considerada do tipo *
+      *FIFO**, isto é, _**First In, First Out**_
+    - O primeiro Nó sempre deve apontar para `null`;
+    - O Nó que sucede o primeiro deve apontar para um outro Nó que é também seu sucessor;
+    - O último Nó da fila deve possuir uma referência de entrada da fila;
 
 ## Métodos da fila:
 
@@ -259,6 +261,27 @@ Verifica se a referência de entrada para fila está nula. O valor retornado dev
 
 </details>
 
+<details>
+  <summary><strong>Lista Circular</strong></summary>
+
+## Conceito:
+
+- A lista circular assemelha-se a uma lista de encadeamento simples. Contudo, a diferença é que o último elemento ao
+  invés de apontar para ``null``, ele deverá apontar para o primeiro Nó.
+- O primeiro elemento de uma lista circular é chamado de cauda, e o último é chamado de cabeça.
+- A referência de entrada na lista costuma se dar pela cauda, isto é, o primeiro elemento. Entretanto, também poderia
+  acontecer a partir da cabeça da lista.
+
+## Métodos da lista circular:
+
+### .add()
+
+Ao adicionar um novo Nó na lista, toma-se como base a referência de entrada. A partir dela, desvinculamos esta
+referência da atual cauda da lista. Em seguida, insere-se o novo Nó e, então, a referência de entrada passa a apontar
+para tal. O novo Nó, por sua vez, deverá apontar para a antiga cauda da lista. Por fim, basta modificar a referência de
+próximo Nó da cabeça (último elemento) da lista, pois este precisa passar a apontar para o novo Nó que foi inserido, ao
+invés do antigo.
+
+</details>
+
 ----
-
-
