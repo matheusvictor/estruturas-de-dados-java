@@ -45,10 +45,6 @@ public class ListaDuplamenteEncadeada<T> {
         this.tamanhoLista++;
     }
 
-    public void remove() {
-
-    }
-
     private void remove(int indice) {
 
         if (this.isEmpty()) {
