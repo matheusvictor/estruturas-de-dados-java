@@ -43,7 +43,7 @@ public class ListaCircular<T> {
 
     public void remove(int indice) {
         if (indice >= this.tamanhoLista) {
-            throw new IndexOutOfBoundsException("Índice não existe nesta lista!");
+            throw new IndexOutOfBoundsException("Esta lista não possui o índice " + indice + "!");
         }
 
         No<T> noARemover = this.noCauda;
@@ -68,8 +68,6 @@ public class ListaCircular<T> {
     private No<T> getNo(int indice) {
         if (this.isEmpty()) {
             throw new IndexOutOfBoundsException("A lista está vazia!");
-        } else if (indice > this.tamanhoLista) {
-            throw new IndexOutOfBoundsException("Índice não existe nesta lista!");
         } else {
             if (indice == 0) {
                 return this.noCauda;
@@ -89,7 +87,7 @@ public class ListaCircular<T> {
 
         No<T> noAuxiliar = this.noCauda;
         for (int i = 0; i < this.size(); i++) {
-            strRetorno += "[No { conteúdo " + noAuxiliar.getConteudo() + " } ] --> ";
+            strRetorno += "No { conteúdo = " + noAuxiliar.getConteudo() + " } --> ";
             noAuxiliar = noAuxiliar.getProximoNo();
         }
 
