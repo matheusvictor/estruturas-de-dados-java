@@ -22,6 +22,25 @@ public class ListaCircular<T> {
         return this.tamanhoLista == 0;
     }
 
+    public void add(T conteudo) {
+        No<T> novoNo = new No<>(conteudo);
+
+        if (this.isEmpty()) {
+            this.noCabeca = novoNo;
+            this.noCauda = this.noCabeca;
+            this.noCabeca.setProximoNo(this.noCauda);
+        } else {
+            novoNo.setProximoNo(this.noCauda);
+            this.noCabeca.setProximoNo(novoNo);
+            this.noCauda = novoNo;
+        }
+        this.tamanhoLista++;
+    }
+
+    public void add(T conteudo, int indice) {
+        // TODO: Implementar sobrecarga para inserir um novo Nó em um dado índice
+    }
+
     public void remove(int indice) {
         if (indice >= this.tamanhoLista) {
             throw new IndexOutOfBoundsException("Índice não existe nesta lista!");
@@ -63,6 +82,5 @@ public class ListaCircular<T> {
             return noAuxiliar;
         }
     }
-
 
 }
