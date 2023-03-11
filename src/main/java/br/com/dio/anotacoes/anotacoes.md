@@ -284,4 +284,67 @@ invés do antigo.
 
 </details>
 
+<details>
+  <summary><strong>Árvores</strong></summary>
+
+## Conceito:
+
+- Ao contrário das estruturas vistas anteriormente, uma árvore consiste em uma estrutura bidimensional e não linear.
+- Nesta estrutura, os Nós constituem-se de maneira hierárquica com base em relações de dependência.
+- Estruturas de árvores costumam a ser utilizadas, por exemplo, para estruturação de arquivos, banco de dados, páginas
+  Web, etc.
+
+## Características de uma árvore hierárquica:
+
+- Uma árvore hierárquica é composta por:
+    - Nós (sendo que estes podem armazenar dado e referências para outros Nós);
+    - Raiz (Nó principal da árvore, o qual dá origem às demais ramificações da árvore);
+    - Nó Pai é Nó que está imediatamente acima de um outro Nó, sendo este último denominado Filho
+    - Nó Irmão
+    - Nível de um Nó
+    - Altura ou profundidade: grau máximo dos Nós
+    - Folha (ou Nó terminal): Nós que não possuem Filhos
+    - Nó interno: são Nós que não são Folhas
+    - Grau de um Nó é determinado pelo número de Filhos que este possui
+    - Subárvore: formada a partir de um Nó da árvore principal, sendo considerada também como um Ramo
+
+## Tipos de Árvore:
+
+- Árvore Binária;
+- Árvore AVL;
+- Árvore Ordenada;
+- Árvore Rubro-Negra;
+- Árvore B
+- Árvore B+
+- Árvore Hiperbólica
+- Etc.
+
+Neste curto, foi abordado apenas o tipo **Árvore Binária**.
+
+## Árvore de busca Binária
+
+- Uma das principais características de uma Árvore Binária diz com relação às posições dos Nós, onde:
+    - O maiores Nós ficam à direita;
+    - E os menores Nós ficam à esquerda.
+- Por se tratar de uma Árvore Binária, como o nome sugere, cara Nó da Árvore poderá apontar para nenhum ou até outros 2
+  Nós, no máximo.
+- Assim, além do conteúdo, cada Nó possui então duas referências: um que irá apontar para um Nó à esquerda, e um outro
+  para um Nó à direita. Quando esses Nós não apontam para um outro Nó, estes deveram apontar para nulo. Se tanto a
+  referência à esquerda quanto à direita apontarem para nulo, este Nó é chamado de Nó Folha.
+- O primeiro Nó a ser inserido na Árvore é denominado de Raiz. Os demais que são inseridos posteriormente devem seguir
+  as regras descritas acima.
+
+## Métodos da Árvore Binária:
+
+### .insert(No<T> no)
+
+### remove
+
+- Exclusão da Raiz:
+    - Caso o Nó excluído seja a Raiz, devemos substituí-lo pelo maior Nó que estiver à esquerda da Raiz. Isso dar-se
+      pelo fato de que, desta forma, é possível garantir que todos os elementos à esquerda deste novo Nó são menores que
+      ele.
+
+</details>
+
 ----
