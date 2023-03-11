@@ -13,6 +13,82 @@ public class ArvoreBinaria<T extends Comparable<T>> {
         this.noRaiz = this.insertNo(this.noRaiz, novoNo);
     }
 
+    public void remove(T conteudo) throws NullPointerException {
+        try {
+            BinNo<T> noAtual = this.noRaiz;
+            BinNo<T> noPai = null;
+            BinNo<T> noFilho = null;
+            BinNo<T> noTemp = null;
+
+            while (noAtual != null && !noAtual.getConteudo().equals(conteudo)) {
+                noPai = noAtual;
+                if (conteudo.compareTo(noAtual.getConteudo()) < 0) { // conteúdo passado como parâmetro é menor do que o conteúdo armazenado em noAtua
+                    noAtual = noAtual.getNoEquerdo(); // assim, devemos continuar buscando o conteúdo no lado esquerdo da Árvore
+                } else {
+                    noAtual = noAtual.getNoDireito();
+                }
+            }
+
+            // caso a Raiz seja nula ou, ao percorrer a Árvore, chegamos a uma Folha
+            if (noAtual == null) {
+                throw new NullPointerException("Conteúdo não encontrado!");
+            }
+
+            if (noPai == null) { // remoção da Raiz. Por ser Raiz, este Nó não tem um Pai
+                if (noAtual.getNoDireito() == null) {
+                    this.noRaiz = noAtual.getNoEquerdo();
+                } else if (noAtual.getNoEquerdo() == null) {
+                    this.noRaiz = noAtual.getNoDireito();
+                } else {
+                    for (noTemp = noAtual, noFilho = noAtual.getNoEquerdo();
+                         noTemp.getNoDireito() != null;
+                         noTemp = noFilho, noFilho = noFilho.getNoEquerdo()
+                    ) {
+                        if (noFilho != noAtual.getNoEquerdo()) {
+                            noTemp.setNoDireito(noFilho.getNoEquerdo());
+                            noFilho.setNoEquerdo(this.noRaiz.getNoEquerdo());
+                        }
+                    }
+                    noFilho.setNoDireito(this.noRaiz.getNoDireito());
+                    this.noRaiz = noFilho;
+                }
+
+            } else if (noAtual.getNoDireito() == null) {
+                if (noPai.getNoEquerdo() == noAtual) {
+                    noPai.setNoEquerdo(noAtual.getNoEquerdo());
+                } else {
+                    noPai.setNoDireito(noAtual.getNoEquerdo());
+                }
+            } else if (noAtual.getNoEquerdo() == null) {
+                if (noPai.getNoEquerdo() == noAtual) {
+                    noPai.setNoEquerdo(noAtual.getNoDireito());
+                } else {
+                    noPai.setNoDireito(noAtual.getNoDireito());
+                }
+            } else {
+                for (
+                        noTemp = noAtual, noFilho = noAtual.getNoEquerdo();
+                        noFilho.getNoDireito() != null;
+                        noTemp = noFilho, noFilho = noFilho.getNoDireito()
+                ) {
+                    if (noFilho != noAtual.getNoEquerdo()) {
+                        noTemp.setNoDireito(noFilho.getNoEquerdo());
+                        noFilho.setNoEquerdo(noAtual.getNoEquerdo());
+                    }
+                    noFilho.setNoDireito(noAtual.getNoDireito());
+                    if (noPai.getNoEquerdo() == noAtual) {
+                        noPai.setNoEquerdo(noFilho);
+                    } else {
+                        noPai.setNoDireito(noFilho);
+                    }
+                }
+            }
+
+        } catch (NullPointerException e) {
+            System.out.println("Conteúdo não encontrado!");
+        }
+    }
+
     private BinNo<T> insertNo(BinNo<T> noAtual, BinNo<T> novoNo) {
         if (noAtual == null) { // Árvore vazia, então novoNo deve ser a Raiz
             return novoNo;
