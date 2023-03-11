@@ -109,7 +109,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
     private void inOrder(BinNo<T> noAtual) {
         if (noAtual != null) {
             this.inOrder(noAtual.getNoEquerdo());
-            System.out.println(noAtual.getConteudo() + ", ");
+            System.out.print(noAtual.getConteudo() + ", ");
             this.inOrder(noAtual.getNoDireito());
         }
     }
@@ -122,7 +122,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
         if (noAtual != null) {
             this.posOrder(noAtual.getNoEquerdo());
             this.posOrder(noAtual.getNoDireito());
-            System.out.println(noAtual.getConteudo() + ", ");
+            System.out.print(noAtual.getConteudo() + ", ");
         }
     }
 
@@ -132,10 +132,17 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 
     private void preOrder(BinNo<T> noAtual) {
         if (noAtual != null) {
-            System.out.println(noAtual.getConteudo() + ", ");
+            System.out.print(noAtual.getConteudo() + ", ");
             this.preOrder(noAtual.getNoEquerdo());
             this.preOrder(noAtual.getNoDireito());
         }
     }
 
+    @Override
+    public String toString() {
+        if (this.noRaiz == null) {
+            return "A Árvore está vazia!";
+        }
+        return super.toString();
+    }
 }
