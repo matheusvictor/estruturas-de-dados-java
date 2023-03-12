@@ -10,7 +10,8 @@
 
 ## Anotações
 
->
+> As anotações deste curso podem ser
+> encontradas [aqui](https://github.com/matheusvictor/estruturas-de-dados-java/blob/master/src/main/java/br/com/dio/anotacoes/anotacoes.md).
 
 ## Autor do repositório
 
@@ -26,11 +27,9 @@
     </td>
 </table>
 
-## 🤝 Colaboradores
+# Créditos
 
-> Agradecemos às seguintes pessoas que contribuíram para este projeto:
-
-### Créditos
-
-> Lorem ipsum
-
+- Este ``README.md`` foi baseado nos modelos disponibilizados pelo **@iuricode**, neste
+  repositório: https://github.com/iuricode/readme-template.
+- Repositório original com todos os materiais utilizados pelo instrutor do
+  curso: https://github.com/jrdutra/estruturaDeDadosJavaDio.
